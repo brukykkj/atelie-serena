@@ -1,6 +1,6 @@
 # Ateliê Serena
 
-Landing page de um ateliê de beleza especializado em **sobrancelhas, cílios e estética facial**, com foco em atendimento personalizado e agendamento direto pelo WhatsApp.
+Projeto de demonstração: landing page de um ateliê de beleza especializado em **sobrancelhas, cílios e estética facial**, com foco em atendimento personalizado e agendamento direto pelo WhatsApp.
 
 ## Funcionalidades
 
@@ -18,8 +18,12 @@ HTML5, CSS3 e JavaScript puro. Única dependência externa: fontes do Google Fon
 
 ```
 .
-├── index.html   # página única (HTML + CSS + JS)
-├── img/         # imagens do portfólio
+├── index.html                    # página principal (HTML + CSS + JS)
+├── politica-de-privacidade.html  # política de privacidade (exemplo)
+├── termos-de-uso.html            # termos de uso (exemplo)
+├── 404.html                      # página de erro personalizada
+├── css/pages.css                 # estilos das páginas internas
+├── img/                          # imagens do portfólio
 └── README.md
 ```
 
