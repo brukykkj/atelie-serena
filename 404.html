@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Página não encontrada | Ateliê Serena</title>
+  <!--
+    O GitHub Pages serve este arquivo para qualquer URL inexistente, mesmo em subpastas.
+    Por isso definimos a base do site: em usuario.github.io/repo/ a base é /repo/;
+    em domínio próprio ou localhost é /.
+  -->
+  <script>
+    var base = location.hostname.endsWith("github.io")
+      ? "/" + location.pathname.split("/")[1] + "/"
+      : "/";
+    document.write('<base href="' + base + '">');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <a class="brand" href="index.html" aria-label="Ateliê Serena, início">
+        <span class="brand-mark" aria-hidden="true">S</span>
+        <span>Ateliê Serena</span>
+      </a>
+      <a href="index.html">← Voltar ao site</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="container error-page">
+      <span class="eyebrow">Erro 404</span>
+      <p class="error-code" aria-hidden="true">404</p>
+      <h1>Página não encontrada</h1>
+      <p>O endereço que você tentou acessar não existe ou foi movido. Que tal voltar e conhecer nossos serviços?</p>
+      <a class="btn btn-primary" href="index.html">Voltar para o início</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© <span id="year"></span> Ateliê Serena. Site de demonstração.</div>
+  </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

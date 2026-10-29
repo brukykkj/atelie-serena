@@ -1,0 +1,55 @@
+/* Estilos compartilhados das páginas internas (política, termos e 404) */
+:root {
+  --salmon: #FA8072;
+  --black: #111111;
+  --gray: #66615F;
+  --line: #E9E4E2;
+  --white: #FFFFFF;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0; color: var(--black); background: var(--white);
+  font-family: "DM Sans", sans-serif; line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh; display: flex; flex-direction: column;
+}
+a { color: inherit; text-underline-offset: 4px; }
+.container { width: min(760px, calc(100% - 40px)); margin-inline: auto; }
+h1, h2 { font-family: "Playfair Display", serif; line-height: 1.15; }
+h1 { font-size: clamp(2rem, 6vw, 3rem); letter-spacing: -.03em; margin: 12px 0 8px; }
+h2 { font-size: 1.4rem; margin: 36px 0 10px; }
+p, li { color: var(--gray); }
+li { margin-bottom: 6px; }
+
+.header { border-bottom: 1px solid var(--line); }
+.header .container { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
+.brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 700; }
+.brand-mark {
+  width: 38px; height: 38px; border-radius: 50%; background: var(--salmon);
+  display: grid; place-items: center; font-family: "Playfair Display", serif;
+}
+.eyebrow {
+  color: #A94E43; font-size: .76rem; font-weight: 700;
+  letter-spacing: .13em; text-transform: uppercase;
+}
+.updated { font-size: .9rem; }
+main { flex: 1; padding: 56px 0 72px; }
+
+.btn {
+  min-height: 52px; padding: 14px 24px; border-radius: 999px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-weight: 700; text-decoration: none; transition: transform .2s ease, background .2s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background: var(--salmon); color: var(--black); box-shadow: 0 8px 22px #fa80723d; }
+.btn-primary:hover { background: #F76E60; }
+
+.footer { border-top: 1px solid var(--line); padding: 22px 0; font-size: .9rem; color: var(--gray); }
+
+/* 404 */
+.error-page { text-align: center; padding: 40px 0; }
+.error-code {
+  font-family: "Playfair Display", serif; font-size: clamp(6rem, 28vw, 11rem);
+  line-height: 1; margin: 0; color: var(--salmon); letter-spacing: -.05em;
+}
+.error-page p { max-width: 460px; margin: 0 auto 28px; }
