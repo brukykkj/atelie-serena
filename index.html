@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FFFFFF">
+  <meta name="description" content="Realce sua beleza natural com atendimento personalizado em sobrancelhas, cílios e estética facial. Agende sua avaliação pelo WhatsApp.">
+  <title>Ateliê Serena | Beleza natural, cuidado personalizado</title>
+
+  <!-- Google Fonts: única dependência externa -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --salmon: #FA8072;
+      --salmon-light: #FFF0ED;
+      --black: #111111;
+      --gray: #66615F;
+      --line: #E9E4E2;
+      --white: #FFFFFF;
+      --content: 1160px;
+      --radius: 18px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0;
+      color: var(--black);
+      background: var(--white);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
+    .container { width: min(var(--content), calc(100% - 40px)); margin-inline: auto; }
+    .section { padding: 76px 0; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px;
+      color: #A94E43; font-size: .76rem; font-weight: 700;
+      letter-spacing: .13em; text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--salmon); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: "Playfair Display", serif; line-height: 1.14; }
+    h1 { font-size: clamp(2.5rem, 8vw, 4.8rem); letter-spacing: -.04em; margin: 16px 0 20px; }
+    h2 { font-size: clamp(2rem, 5vw, 3.2rem); letter-spacing: -.025em; margin: 12px 0 16px; }
+    h3 { font-size: 1.35rem; margin-bottom: 10px; }
+    .lead { color: var(--gray); font-size: 1.08rem; max-width: 590px; }
+    .section-intro { max-width: 650px; margin-bottom: 34px; }
+    .section-intro p { color: var(--gray); margin-bottom: 0; }
+    .btn {
+      min-height: 52px; padding: 14px 22px; border: 1px solid transparent;
+      border-radius: 999px; display: inline-flex; align-items: center;
+      justify-content: center; gap: 9px; font-weight: 700; text-decoration: none;
+      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--salmon); color: var(--black); box-shadow: 0 8px 22px #fa80723d; }
+    .btn-primary:hover { background: #F76E60; }
+    .btn-secondary { border-color: var(--black); background: transparent; }
+    .btn-secondary:hover { background: var(--black); color: var(--white); }
+    .text-link { text-underline-offset: 4px; font-weight: 700; }
+    .icon { width: 19px; height: 19px; flex: 0 0 auto; }
+
+    /* Navegação */
+    .header {
+      position: sticky; top: 0; z-index: 20; background: #ffffffed;
+      border-bottom: 1px solid var(--line); backdrop-filter: blur(12px);
+    }
+    .nav { min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+    .brand-mark {
+      width: 36px; height: 36px; display: grid; place-items: center;
+      border: 1px solid var(--salmon); border-radius: 50%;
+      font-family: "Playfair Display", serif; font-size: 1.1rem;
+    }
+    .brand-name { font-family: "Playfair Display", serif; font-size: 1.15rem; font-weight: 600; line-height: 1.1; }
+    .brand-caption { display: block; margin-top: 4px; color: var(--gray); font: 600 .59rem "DM Sans", sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+    .nav-links { display: none; align-items: center; gap: 26px; }
+    .nav-links a { color: #393534; font-size: .9rem; text-decoration: none; }
+    .nav-links a:hover { color: #A94E43; }
+    .nav .btn { min-height: 44px; padding: 10px 15px; font-size: .82rem; }
+    .menu-toggle {
+      display: grid; place-items: center; width: 44px; height: 44px;
+      border: 1px solid var(--line); border-radius: 50%; background: var(--white);
+      cursor: pointer;
+    }
+    .menu-toggle span, .menu-toggle span::before, .menu-toggle span::after {
+      width: 17px; height: 1.5px; display: block; position: relative; background: var(--black);
+    }
+    .menu-toggle span::before, .menu-toggle span::after { content: ""; position: absolute; left: 0; }
+    .menu-toggle span::before { top: -5px; }
+    .menu-toggle span::after { top: 5px; }
+    .mobile-menu {
+      display: none; padding: 8px 20px 18px; border-top: 1px solid var(--line);
+      background: var(--white);
+    }
+    .mobile-menu.open { display: grid; }
+    .mobile-menu a { padding: 12px 0; text-decoration: none; border-bottom: 1px solid var(--line); }
+    .mobile-menu .btn { margin-top: 14px; border-bottom: 0; }
+
+    /* Hero */
+    .hero { padding: 52px 0 66px; overflow: hidden; }
+    .hero-grid { display: grid; gap: 38px; align-items: center; }
+    .hero-copy { max-width: 650px; }
+    .hero-copy h1 em { color: #C55F52; font-style: normal; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 27px 0 22px; }
+    .micro-trust { display: flex; flex-wrap: wrap; gap: 10px 18px; color: #55504E; font-size: .86rem; }
+    .micro-trust span { display: inline-flex; align-items: center; gap: 7px; }
+    .check { color: #A94E43; font-weight: 700; }
+    .hero-visual { position: relative; max-width: 550px; margin-inline: auto; }
+    .image-frame { padding: 9px; border: 1px solid var(--salmon); border-radius: 170px 170px 22px 22px; }
+    .hero-photo {
+      width: 100%; height: 400px; object-fit: cover;
+      border-radius: 160px 160px 15px 15px;
+      background: #F5E7E3;
+    }
+    .photo-note {
+      position: absolute; right: -7px; bottom: 23px; max-width: 210px;
+      padding: 15px 17px; border: 1px solid var(--line); border-radius: 14px;
+      background: var(--white); box-shadow: 0 12px 35px #11111113;
+      font-size: .85rem;
+    }
+    .photo-note strong { display: block; font-family: "Playfair Display", serif; font-size: 1.03rem; }
+    .photo-note span { color: var(--gray); }
+    .placeholder-caption { margin: 8px 0 0; color: var(--gray); font-size: .72rem; text-align: center; }
+
+    /* Diferenciais */
+    .benefits { padding: 25px 0; background: var(--salmon-light); }
+    .benefit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 16px; }
+    .benefit { display: flex; align-items: flex-start; gap: 10px; font-size: .87rem; font-weight: 600; }
+    .benefit-icon { color: #A94E43; font-size: 1.1rem; }
+
+    /* Serviços */
+    .services-grid { display: grid; gap: 16px; }
+    .service-card {
+      padding: 23px; border: 1px solid var(--line); border-radius: var(--radius);
+      background: var(--white); transition: border-color .2s, transform .2s, box-shadow .2s;
+    }
+    .service-card:hover { transform: translateY(-3px); border-color: var(--salmon); box-shadow: 0 12px 30px #fa80721a; }
+    .service-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 15px; }
+    .service-icon {
+      width: 42px; height: 42px; display: grid; place-items: center;
+      border-radius: 50%; background: var(--salmon-light); color: #A94E43; font-size: 1.15rem;
+    }
+    .service-card p { min-height: 48px; margin-bottom: 18px; color: var(--gray); font-size: .92rem; }
+    .service-meta { display: flex; justify-content: space-between; gap: 8px; padding-top: 15px; border-top: 1px solid var(--line); font-size: .85rem; }
+    .service-meta span { color: var(--gray); }
+    .service-meta strong { font-size: .98rem; }
+    .service-cta { margin-top: 17px; font-size: .85rem; }
+    .price-note { margin: 20px 0 0; color: var(--gray); font-size: .82rem; }
+
+    /* Portfólio */
+    .portfolio { background: #FFFCFB; }
+    .gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .gallery-item { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: var(--salmon-light); }
+    .gallery-item img { width: 100%; height: 210px; object-fit: cover; transition: transform .4s; }
+    .gallery-item:hover img { transform: scale(1.035); }
+    .gallery-label {
+      position: absolute; left: 10px; bottom: 10px; padding: 6px 10px;
+      border-radius: 999px; background: var(--white); font-size: .71rem; font-weight: 700;
+    }
+    .gallery-disclaimer { margin: 15px 0 0; color: var(--gray); font-size: .81rem; }
+
+    /* Avaliações */
+    .reviews-grid { display: grid; gap: 15px; }
+    .review-card { padding: 23px; border: 1px solid var(--line); border-radius: var(--radius); }
+    .stars { color: #D66557; letter-spacing: .11em; font-size: 1rem; }
+    .review-card blockquote { margin: 14px 0 17px; font-family: "Playfair Display", serif; font-size: 1.14rem; line-height: 1.5; }
+    .review-author { color: var(--gray); font-size: .84rem; }
+    .review-author strong { color: var(--black); }
+    .trust-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .trust-badge { display: inline-flex; align-items: center; gap: 9px; padding: 10px 13px; border: 1px solid var(--line); border-radius: 999px; font-size: .78rem; font-weight: 600; }
+    .trust-badge span { color: #A94E43; }
+    .ethical-note { margin-top: 23px; padding: 18px 20px; border-left: 3px solid var(--salmon); background: var(--salmon-light); }
+    .ethical-note p { margin: 0; font-size: .91rem; }
+    .ethical-note strong { font-weight: 700; }
+
+    /* Localização */
+    .location { background: #FFFCFB; }
+    .location-grid { display: grid; gap: 22px; }
+    .location-card { padding: 23px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); }
+    .location-card h3 { font-size: 1.18rem; }
+    .location-card p { margin-bottom: 5px; color: var(--gray); }
+    .location-map { min-height: 270px; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--salmon-light); }
+    .location-map iframe { width: 100%; height: 100%; min-height: 270px; border: 0; }
+    .location-map-fallback { min-height: 270px; display: grid; place-items: center; padding: 20px; text-align: center; }
+    .location-map-fallback p { color: var(--gray); }
+    .hours { display: grid; grid-template-columns: 1fr auto; gap: 7px 15px; margin: 12px 0 20px; font-size: .9rem; }
+    .hours span:nth-child(odd) { color: var(--gray); }
+
+    /* CTA final */
+    .closing { padding: 60px 0; }
+    .closing-box {
+      padding: 38px 24px; border-radius: 24px; background: var(--salmon-light);
+      text-align: center;
+    }
+    .closing-box h2 { max-width: 690px; margin-inline: auto; }
+    .closing-box p { max-width: 560px; margin: 0 auto 22px; color: var(--gray); }
+
+    /* Rodapé e privacidade */
+    .footer { padding: 48px 0 24px; color: var(--white); background: var(--black); }
+    .footer-grid { display: grid; gap: 30px; }
+    .footer .brand-mark { border-color: var(--salmon); color: var(--white); }
+    .footer .brand-caption { color: #C8C2C0; }
+    .footer p { max-width: 390px; margin: 15px 0 0; color: #D3CECC; font-size: .88rem; }
+    .footer h3 { margin: 0 0 13px; color: var(--white); font: 700 .82rem "DM Sans", sans-serif; letter-spacing: .09em; text-transform: uppercase; }
+    .footer-links { display: grid; gap: 9px; }
+    .footer a { color: #F3EFED; text-decoration-color: var(--salmon); text-underline-offset: 4px; font-size: .87rem; }
+    .footer a:hover { color: var(--salmon); }
+    .footer .accent { color: var(--salmon); }
+    .footer-bottom { display: flex; flex-direction: column; gap: 8px; margin-top: 35px; padding-top: 18px; border-top: 1px solid #ffffff2b; color: #BEB8B6; font-size: .77rem; }
+    .privacy-copy { color: #D3CECC !important; font-size: .81rem !important; }
+    .whatsapp-float {
+      position: fixed; right: 18px; bottom: 18px; z-index: 15;
+      width: 56px; height: 56px; display: grid; place-items: center;
+      border: 2px solid var(--white); border-radius: 50%;
+      background: var(--salmon); color: var(--black); box-shadow: 0 5px 20px #11111130;
+      text-decoration: none;
+    }
+    .whatsapp-float svg { width: 25px; height: 25px; }
+
+    @media (min-width: 700px) {
+      .container { width: min(var(--content), calc(100% - 64px)); }
+      .section { padding: 96px 0; }
+      .nav-links { display: flex; }
+      .menu-toggle, .mobile-menu { display: none !important; }
+      .hero { padding: 76px 0 82px; }
+      .hero-grid { grid-template-columns: 1.08fr .92fr; gap: 42px; }
+      .hero-photo { height: 490px; }
+      .benefit-grid { grid-template-columns: repeat(4, 1fr); }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+      .gallery-item img { height: 255px; }
+      .reviews-grid { grid-template-columns: repeat(3, 1fr); }
+      .location-grid { grid-template-columns: .85fr 1.15fr; align-items: stretch; }
+      .location-map iframe { min-height: 100%; }
+      .closing-box { padding: 54px 40px; }
+      .footer-grid { grid-template-columns: 1.4fr .8fr 1fr; }
+      .footer-bottom { flex-direction: row; justify-content: space-between; }
+    }
+    @media (min-width: 980px) {
+      .services-grid { grid-template-columns: repeat(4, 1fr); }
+      .service-card { padding: 22px 19px; }
+      .service-card p { min-height: 75px; }
+    }
+    @media (max-width: 390px) {
+      .container { width: calc(100% - 30px); }
+      .brand-name { font-size: 1rem; }
+      .nav .btn { padding-inline: 12px; font-size: .75rem; }
+      .hero-photo { height: 340px; }
+      .gallery-item img { height: 165px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+    /* Efeito de entrada ao rolar a página */
+.scroll-pop {
+  opacity: 0;
+  transform: translateY(34px) scale(.96);
+  transition:
+    opacity .65s ease,
+    transform .65s cubic-bezier(.2, .8, .2, 1);
+  transition-delay: var(--pop-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.scroll-pop.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-pop {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+}
+.service-carousel-group {
+  margin-top: 34px;
+}
+
+.carousel-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.carousel-heading h3 {
+  margin: 0;
+}
+
+.carousel-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.carousel-arrow {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--black);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.carousel-arrow:hover {
+  border-color: var(--salmon);
+  background: var(--salmon-light);
+}
+
+.services-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 82%;
+  gap: 14px;
+  overflow-x: auto;
+  padding: 4px 2px 16px;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-color: var(--salmon) var(--salmon-light);
+  scrollbar-width: thin;
+}
+
+.services-track .service-card {
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+.service-price {
+  margin: 12px 0;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+@media (min-width: 600px) {
+  .services-track {
+    grid-auto-columns: calc((100% - 28px) / 3);
+  }
+}
+
+@media (min-width: 900px) {
+  .services-track {
+    grid-auto-columns: calc((100% - 42px) / 4);
+  }
+}
+.instagram-header {
+  min-height: 44px !important;
+  padding: 9px 14px !important;
+  font-size: .82rem !important;
+  white-space: nowrap;
+}
+.nav .instagram-header {
+  margin-right: -10px;
+}
+  </style>
+</head>
+
+<body>
+  <!--
+    PERSONALIZE ANTES DE PUBLICAR:
+    1. Troque Ateliê Serena, endereço, telefone, horários e preços pelos dados reais.
+    2. Substitua as fotos de demonstração por imagens autorizadas do estúdio e dos trabalhos.
+    3. Atualize os links de Política, Termos, DPO e Google Maps.
+    4. Configure o consentimento antes de coletar dados de saúde: este modelo não armazena dados.
+  -->
+  <header class="header">
+    <nav class="nav container" aria-label="Navegação principal"
+>
+      <a class="brand" href="#inicio" aria-label="Ateliê Serena, início">
+        <span class="brand-mark" aria-hidden="true">S</span>
+        <span>
+          <span class="brand-name">Ateliê Lumiere</span>
+          <span class="brand-caption">Beleza com cuidado</span>
+        </span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#servicos">Serviços</a>
+        <a href="#portfolio">Resultados</a>
+        <a href="#avaliacoes">Avaliações</a>
+        <a href="#localizacao">Localização</a>
+      </div>
+
+      <a class="btn btn-primary" data-whatsapp href="+55 6299303-0110" target="_blank" rel="noopener">
+        Agendar pelo WhatsApp
+
+      </a>
+        <a
+  class="btn btn-secondary instagram-header"
+  href="https://www.instagram.com/dudaa_.rodriguess_/"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Visitar o Instagram"
+>
+  Instagram
+</a>
+
+      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span aria-hidden="true"></span>
+      </button>
+    </nav>
+
+  
+
+
+
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#servicos">Serviços</a>
+      <a href="#portfolio">Resultados</a>
+      <a href="#avaliacoes">Avaliações</a>
+      <a href="#localizacao">Localização e horários</a>
+      <a class="btn btn-primary" data-whatsapp href="+55 62 99303-0110" target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Seu momento de cuidado</span>
+          <h1>Realce sua beleza natural e <em>renove sua autoestima.</em></h1>
+          <p class="lead">Cuidado personalizado para você se sentir bem na própria pele. Agende seu horário e descubra um atendimento pensado nos detalhes.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" data-whatsapp href="#" target="_blank" rel="noopener">
+              Quero agendar
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="btn btn-secondary" href="#servicos">Conhecer serviços</a>
+            <a
+  class="btn btn-secondary"
+  href="https://www.instagram.com/dudaa_.rodriguess_/"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Visitar o Instagram"
+>
+  <svg
+    class="icon"
+    viewBox="0 0 24 24"
+    fill="none"
+    aria-hidden="true"
+  >
+    <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.7"/>
+    <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.7"/>
+    <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+  </svg>
+  Instagram
+</a>
+          </div>
+          <div class="micro-trust">
+            <span><b class="check">✓</b> Atendimento individual</span>
+            <span><b class="check">✓</b> Avaliação cuidadosa</span>
+            <span><b class="check">✓</b> Ambiente acolhedor</span>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="image-frame">
+            <!-- Substitua pela foto real do espaço; use imagens com autorização. -->
+            <img class="hero-photo" src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?auto=format&fit=crop&w=1200&q=85" alt="Ambiente de beleza claro e acolhedor" fetchpriority="high">
+          </div>
+          <div class="photo-note">
+            <strong>Beleza no seu tempo</strong>
+            <span>Um atendimento feito para você.</span>
+          </div>
+          <p class="placeholder-caption">Imagem ilustrativa — substitua pela foto do estúdio.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits" aria-label="Diferenciais do atendimento">
+      <div class="container benefit-grid">
+        <div class="benefit"><span class="benefit-icon">✦</span><span>Plano de cuidado personalizado</span></div>
+        <div class="benefit"><span class="benefit-icon">♡</span><span>Escuta e atenção em cada etapa</span></div>
+        <div class="benefit"><span class="benefit-icon">✧</span><span>Materiais higienizados</span></div>
+        <div class="benefit"><span class="benefit-icon">⌖</span><span>Espaço reservado e acolhedor</span></div>
+      </div>
+    </section>
+
+   <section class="section" id="servicos">
+  <div class="container">
+    <div class="section-intro">
+      <span class="eyebrow">Serviços e valores</span>
+      <h2>Escolha seu próximo cuidado.</h2>
+      <p>Deslize cada lista para ver todas as opções. Para agendar ou tirar dúvidas, fale com a gente pelo WhatsApp.</p>
+    </div>
+
+    <div class="service-carousel-group">
+      <div class="carousel-heading">
+        <h3>Extensão de cílios</h3>
+        <div class="carousel-controls">
+          <button class="carousel-arrow" type="button" aria-label="Ver serviços anteriores" data-scroll="-1">←</button>
+          <button class="carousel-arrow" type="button" aria-label="Ver mais serviços" data-scroll="1">→</button>
+        </div>
+      </div>
+      <div class="services-track">
+        <article class="service-card"><span class="service-icon">♡</span><h3>Volume egípcio</h3><p class="service-price">R$ 160,00</p><a class="text-link" data-service="Extensão de cílios — Volume egípcio" data-whatsapp href="#" target="_blank" rel="noopener">Agendar →</a></article>
+        <article class="service-card"><span class="service-icon">♡</span><h3>Volume brasileiro</h3><p class="service-price">R$ 120,00</p><a class="text-link" data-service="Extensão de cílios — Volume brasileiro" data-whatsapp href="#" target="_blank" rel="noopener">Agendar →</a></article>
+        <article class="service-card"><span class="service-icon">♡</span><h3>Mega brasileiro</h3><p class="service-price">R$ 150,00</p><a class="text-link" data-service="Extensão de cílios — Mega brasileiro" data-whatsapp href="#" target="_blank" rel="noopener">Agendar →</a></article>
+        <article class="service-card"><span class="service-icon">♡</span><h3>Volume híbrido</h3><p class="service-price">R$ 140,00</p><a class="text-link" data-service="Extensão de cílios — Volume híbrido" data-whatsapp href="#" target="_blank" rel="noopener">Agendar →</a></article>
+        <article class="service-card"><span class="service-icon">♡</span><h3>Fox Eyes</h3><p class="service-price">R$ 160,00</p><a class="text-link" data-service="Extensão de cílios — Fox Eyes" data-whatsapp href="#" target="_blank" rel="noopener">Agendar →</a></article>
+        <article class="service-card"><span class="service-icon">♡</span><h3>Volume Sirena</h3><p class="service-price">R$ 140,00</p><a class="text-link" data-service="Extensão de cílios — Volume Sirena" data-whatsapp href="#" target="_blank" rel="noopener">Agendar →</a></article>
+      </div>
+    </div>
+
+    <div class="service-carousel-group">
+      <div class="carousel-heading">
+        <h3>Manutenção · 15 a 20 dias</h3>
+        <div class="carousel-controls">
+          <button class="carousel-arrow" type="button" aria-label="Ver serviços anteriores" data-scroll="-1">←</button>
+          <button class="carousel-arrow" type="button" aria-label="Ver mais serviços" data-scroll="1">→</button>
+        </div>
+      </div>
+      <div class="services-track">
+        <article class="service-card"><span class="service-icon">♡</span><h3>Volume egípcio</h3><p class="service-price">R$ 90,00</p><a class="text-link" data-service="Manutenção de cílios — Volume egípcio" data-whatsapp href="#" target="_blank" rel="noopener">Agendar →</a></article>
+        <article class="service-card"><span class="service-icon">♡</span><h3>Volume brasileiro</h3><p class="service-price">R$ 80,00</p><a class="text-link" data-service="Manutenção de cílios — Volume brasileiro" data-whatsapp href="#" target="_blank" rel="noopener">Agendar →</a></article>
+        <article class="service-card"><span class="service-icon">♡</span><h3>Mega brasileiro</h3><p class="service-price">R$ 100,00</p><a class="text-link" data-service="Manutenção de cílios — Mega brasileiro" data-whatsapp href="#" target="_blank" rel="noopener">Agendar →</a></article>
+        <article class="service-card"><span class="service-icon">♡</span><h3>Volume híbrido</h3><p class="service-price">R$ 85,00</p><a class="text-link" data-service="Manutenção de cílios — Volume híbrido" data-whatsapp href="#" target="_blank" rel="noopener">Agendar →</a></article>
+        <article class="service-card"><span class="service-icon">♡</span><h3>Fox Eyes</h3><p class="service-price">R$ 100,00</p><a class="text-link" data-service="Manutenção de cílios — Fox Eyes" data-whatsapp href="#" target="_blank" rel="noopener">Agendar →</a></article>
+        <article class="service-card"><span class="service-icon">♡</span><h3>Volume Sirena</h3><p class="service-price">R$ 90,00</p><a class="text-link" data-service="Manutenção de cílios — Volume Sirena" data-whatsapp href="#" target="_blank" rel="noopener">Agendar →</a></article>
+      </div>
+    </div>
+
+    <div class="service-carousel-group">
+      <div class="carousel-heading">
+        <h3>Outros serviços</h3>
+        <div class="carousel-controls">
+          <button class="carousel-arrow" type="button" aria-label="Ver serviços anteriores" data-scroll="-1">←</button>
+          <button class="carousel-arrow" type="button" aria-label="Ver mais serviços" data-scroll="1">→</button>
+        </div>
+      </div>
+      <div class="services-track">
+        <article class="service-card"><span class="service-icon">✧</span><h3>Design simples</h3><p class="service-price">R$ 30,00</p><a class="text-link" data-service="Design simples" data-whatsapp href="#" target="_blank" rel="noopener">Agendar →</a></article>
+        <article class="service-card"><span class="service-icon">✧</span><h3>Design com henna</h3><p class="service-price">R$ 45,00</p><a class="text-link" data-service="Design com henna" data-whatsapp href="#" target="_blank" rel="noopener">Agendar →</a></article>
+        <article class="service-card"><span class="service-icon">✧</span><h3>Brow Lamination</h3><p class="service-price">R$ 80,00</p><a class="text-link" data-service="Brow Lamination" data-whatsapp href="#" target="_blank" rel="noopener">Agendar →</a></article>
+        <article class="service-card"><span class="service-icon">✧</span><h3>Buço</h3><p class="service-price">R$ 15,00</p><a class="text-link" data-service="Buço" data-whatsapp href="#" target="_blank" rel="noopener">Agendar →</a></article>
+        <article class="service-card"><span class="service-icon">✧</span><h3>Depilação nasal</h3><p class="service-price">R$ 15,00</p><a class="text-link" data-service="Depilação nasal" data-whatsapp href="#" target="_blank" rel="noopener">Agendar →</a></article>
+        <article class="service-card"><span class="service-icon">✧</span><h3>Depilação facial</h3><p class="service-price">R$ 20,00</p><a class="text-link" data-service="Depilação facial" data-whatsapp href="#" target="_blank" rel="noopener">Agendar →</a></article>
+        <article class="service-card"><span class="service-icon">✧</span><h3>Limpeza de pele</h3><p class="service-price">R$ 100,00</p><a class="text-link" data-service="Limpeza de pele" data-whatsapp href="#" target="_blank" rel="noopener">Agendar →</a></article>
+      </div>
+    </div>
+
+    <p class="price-note">Os valores foram transcritos da tabela enviada. Confirme a disponibilidade e as condições pelo WhatsApp.</p>
+  </div>
+</section>
+      </div>
+    </section>
+
+    <section class="section portfolio" id="portfolio">
+      <div class="container">
+        <div class="section-intro">
+          <span class="eyebrow">Portfólio</span>
+          <h2>Detalhes que fazem você se reconhecer.</h2>
+          <p>Uma seleção de referências visuais. Para publicar resultados reais, utilize fotos autorizadas e identifique cada procedimento corretamente.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-item">
+            <img src="img/designsmb.jpeg" alt="Referência de cuidado e beleza do olhar" loading="lazy">
+            <figcaption class="gallery-label">Design de sobrancelhas</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="img/relcaolhar.jpeg" alt="Referência de maquiagem e olhar" loading="lazy">
+            <figcaption class="gallery-label">Realce do olhar</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="img/facial.jpeg" alt="Referência de cuidados faciais" loading="lazy">
+            <figcaption class="gallery-label">Cuidado facial</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="img/blzcuidado.jpeg" alt="Referência de atendimento em beleza" loading="lazy">
+            <figcaption class="gallery-label">Beleza com cuidado</figcaption>
+          </figure>
+        </div>
+        <p class="gallery-disclaimer">Imagens ilustrativas. Resultados podem variar conforme avaliação individual, características pessoais e cuidados posteriores. Fotografias de antes e depois devem ser publicadas somente com autorização da cliente.</p>
+      </div>
+    </section>
+
+    <section class="section" id="avaliacoes">
+      <div class="container">
+        <div class="section-intro">
+          <span class="eyebrow">Experiências</span>
+          <h2>Um cuidado que começa pela escuta.</h2>
+          <p>Atendimento atencioso, informação clara e respeito às escolhas de cada pessoa.</p>
+        </div>
+
+        <!-- Depoimentos de exemplo: substitua por avaliações verdadeiras autorizadas. -->
+        <div class="reviews-grid">
+          <article class="review-card">
+            <div class="stars" aria-label="5 de 5 estrelas">★★★★★</div>
+            <blockquote>“Fui muito bem recebida e adorei o cuidado em entender o resultado que eu queria.”</blockquote>
+            <div class="review-author"><strong>Mariana R.</strong> · cliente</div>
+          </article>
+          <article class="review-card">
+            <div class="stars" aria-label="5 de 5 estrelas">★★★★★</div>
+            <blockquote>“Ambiente tranquilo, tudo explicado com carinho e sem pressa. Me senti segura.”</blockquote>
+            <div class="review-author"><strong>Camila S.</strong> · cliente</div>
+          </article>
+          <article class="review-card">
+            <div class="stars" aria-label="5 de 5 estrelas">★★★★★</div>
+            <blockquote>“O resultado ficou delicado e combinou comigo. Já deixei meu próximo horário marcado.”</blockquote>
+            <div class="review-author"><strong>Juliana M.</strong> · cliente</div>
+          </article>
+        </div>
+
+        <div class="trust-row" aria-label="Compromissos de atendimento">
+          <div class="trust-badge"><span>✓</span> Higienização entre atendimentos</div>
+          <div class="trust-badge"><span>✓</span> Materiais conforme protocolo aplicável</div>
+          <div class="trust-badge"><span>✓</span> Informações claras sobre cada procedimento</div>
+        </div>
+        <p class="price-note">Selo ou menção à Anvisa deve corresponder à regularização e às exigências aplicáveis ao estabelecimento, aos produtos e aos procedimentos. Não publique alegações sem validação.</p>
+
+        <div class="ethical-note">
+          <p><strong>Atendimento personalizado, com vagas limitadas por semana.</strong> Agende com antecedência para encontrar o horário que funciona melhor para você. A disponibilidade é atualizada pelo WhatsApp.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section location" id="localizacao">
+      <div class="container">
+        <div class="section-intro">
+          <span class="eyebrow">Como chegar</span>
+          <h2>Um espaço para você se cuidar com calma.</h2>
+          <p>Estamos em uma região de fácil acesso. Fale com a gente para confirmar o melhor caminho e disponibilidade.</p>
+        </div>
+
+        <div class="location-grid">
+          <div class="location-card">
+            <h3>Ateliê Serena</h3>
+            <p><!-- Atualize com o endereço real -->QD 1, LT 26, Avenida Rio da Prata, QD 1, São Luís De Montes Belos GO, 76100-000, Brasil</p>
+            <p>Jardim Exemplo · São Paulo — SP</p>
+            <p style="margin-top:16px"><strong>Horários</strong></p>
+            <div class="hours">
+              <span>Segunda a sexta</span><strong>8h às 20h</strong>
+              <span>Sábado</span><strong>Fechado</strong>
+              <span>Domingo</span><strong>Fechado</strong>
+            </div>
+           <a
+  class="btn btn-secondary"
+  href="https://www.google.com/maps/search/?api=1&query=-16.524441038851258%2C-50.368769419682636"
+  target="_blank"
+  rel="noopener"
+>
+  Ver rota no Google Maps
+</a>
+</div>
+
+<div class="location-map" aria-label="Mapa de localização">
+  <iframe
+    title="Mapa do Ateliê Lumiere em São Luís de Montes Belos"
+    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d338.0883299878919!2d-50.368769419682636!3d-16.524441038851258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e0!3m2!1spt-BR!2sbr!4v1792537174718!5m2!1spt-BR!2sbr"
+    width="600"
+    height="450"
+    style="border:0;"
+    allowfullscreen
+    loading="lazy"
+    referrerpolicy="strict-origin-when-cross-origin"
+  ></iframe>
+</div>
+         
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="container">
+        <div class="closing-box">
+          <span class="eyebrow">Seu próximo momento começa aqui</span>
+          <h2>Vamos encontrar o cuidado ideal para você?</h2>
+          <p>Conte o que você procura. A gente conversa, responde suas dúvidas e ajuda a escolher o melhor horário.</p>
+          <a class="btn btn-primary" data-whatsapp href="#" target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="privacidade">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="#inicio" aria-label="Ateliê Serena, início">
+            <span class="brand-mark" aria-hidden="true">S</span>
+            <span>
+              <span class="brand-name">Ateliê Serena</span>
+              <span class="brand-caption">Beleza com cuidado</span>
+            </span>
+          </a>
+          <p>Beleza natural, atendimento próximo e cuidado respeitoso em cada etapa.</p>
+        </div>
+
+        <div>
+          <h3>Explore</h3>
+          <div class="footer-links">
+            <a href="#servicos">Serviços</a>
+            <a href="#portfolio">Portfólio</a>
+            <a href="#avaliacoes">Avaliações</a>
+            <a href="#localizacao">Localização</a>
+          </div>
+        </div>
+
+        <div>
+          <h3>Privacidade e contato</h3>
+          <div class="footer-links">
+            <!-- Substitua pelos documentos publicados e canais oficiais. -->
+            <a href="/politica-de-privacidade">Política de Privacidade</a>
+            <a href="/termos-de-uso">Termos de Uso</a>
+            <a href="mailto:privacidade@atelieserena.com.br">DPO / Encarregado de dados</a>
+          </div>
+          <p class="privacy-copy">Dados sobre saúde ou contraindicações são sensíveis. Se forem necessários para a segurança do atendimento, explique a finalidade e solicite consentimento específico antes da coleta. Este site não possui formulário nem armazena informações de saúde.</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Ateliê Serena. Todos os direitos reservados.</span>
+        <span>Feito com <span class="accent">♡</span> e cuidado.</span>
+      </div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" data-whatsapp href="#" target="_blank" rel="noopener" aria-label="Agendar pelo WhatsApp">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M20.4 11.7a8.4 8.4 0 0 1-12.4 7.4L4 20l.9-3.8a8.4 8.4 0 1 1 15.5-4.5Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M9 8.6c.2-.4.4-.4.7-.4h.4c.2 0 .3.1.4.4l.7 1.6c.1.2.1.4 0 .5l-.5.6c-.2.2-.2.3-.1.5.4.8 1.1 1.5 1.9 1.9.2.1.3.1.5-.1l.6-.7c.2-.2.3-.2.5-.1l1.5.7c.3.1.4.2.4.4 0 .3-.2 1.1-.7 1.5-.4.4-1 .6-1.7.5-1-.1-2.2-.7-3.5-1.8-1.1-.9-2-2.2-2.2-3.2-.2-.8 0-1.5.4-2 .3-.4.7-.6.9-.7Z" fill="currentColor"/>
+    </svg>
+  </a>
+
+  <script>
+    /*
+      Personalização: use o telefone do WhatsApp no formato internacional,
+      com DDI e DDD, somente números. Ex.: 5511999999999.
+    */
+    const WHATSAPP_NUMBER = "5562993030110";
+    const DEFAULT_MESSAGE = "Olá! Gostaria de saber mais sobre os serviços e agendar um horário.";
+
+    function buildWhatsAppUrl(message) {
+      return "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
+    }
+
+    document.querySelectorAll("[data-whatsapp]").forEach((link) => {
+      const service = link.dataset.service;
+      const message = service
+        ? `Olá! Tenho interesse em ${service}. Você pode me informar os horários disponíveis?`
+        : DEFAULT_MESSAGE;
+      link.href = buildWhatsAppUrl(message);
+    });
+
+    const menuButton = document.querySelector(".menu-toggle");
+    const mobileMenu = document.querySelector("#mobile-menu");
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "Fechar menu" : "Abrir menu");
+    });
+
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Abrir menu");
+      });
+    });
+
+    document.querySelector("#year").textContent = new Date().getFullYear();
+    // Anima textos, cards e imagens quando entram na área visível.
+const popItems = document.querySelectorAll(
+  ".section-intro, .service-card, .gallery-item, .review-card, " +
+  ".location-card, .location-map, .closing-box, .benefit"
+);
+
+popItems.forEach((item, index) => {
+  item.classList.add("scroll-pop");
+
+  // Pequeno atraso para os itens aparecerem em sequência.
+  const groupIndex = index % 4;
+  item.style.setProperty("--pop-delay", `${groupIndex * 90}ms`);
+});
+
+if ("IntersectionObserver" in window) {
+  const popObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: "0px 0px -35px 0px"
+  });
+
+  popItems.forEach((item) => popObserver.observe(item));
+} else {
+  // Fallback para navegadores sem IntersectionObserver.
+  popItems.forEach((item) => item.classList.add("is-visible"));
+}
+  </script>
+</body>
+</html>
